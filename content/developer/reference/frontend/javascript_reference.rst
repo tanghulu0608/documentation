@@ -1911,11 +1911,9 @@ many2one (FieldMany2One)
 
   Options:
 
-  - quick_create: allow the quick creation of related records - show the 'Create "xxx"'
-    dropdown menu item (default: true)
+  - quick_create: allow the quick creation of related records (default: true)
   - no_create: prevent the creation of related records - hide both the 'Create "xxx"'
-    and "Create and Edit..." dropdown menu items
-    (default: false, takes precedence over other options)
+    and "Create and Edit..." dropdown menu items (default: false)
   - no_quick_create: prevent the quick creation of related records - hide the 'Create "xxx"'
     dropdown menu item (default: false)
   - no_create_edit: hide the "Create and Edit..." dropdown menu item (default: false)
