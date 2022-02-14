@@ -13,6 +13,9 @@
 
         // Show hidden menu when the css classes have been properly specified
         this.navigationMenu.removeAttribute('hidden');
+
+        // add onclick listeners when clicking on a version or language
+        _prepareOnSwitcherClick();
     });
 
     /**
@@ -73,5 +76,84 @@
              header.classList.remove('o_header_scrolled');
          }
      };
+
+    const _prepareOnSwitcherClick = () => {
+        [...document.getElementsByClassName('dropdown-item')].
+            filter(i => (i.tagName === "A" && i.getAttribute("href"))).
+            forEach(dropdownItem => {
+                dropdownItem.addEventListener("click", e => {
+                    _findClosestValidUrl(dropdownItem.getAttribute("href"));
+                });
+            });
+    };
+
+    /**
+     * Test url and find best alternative if not available
+     * Test order:
+     * 1. /documentation/15.0/fr/administration/install/install.html
+     * 2. /documentation/15.0/administration/install/install.html
+     * 3. /documentation/15.0/fr/
+     * 4. /documentation/15.0/
+     * 5. /documentation/
+     */
+    const _findClosestValidUrl = (url) => {
+        const fragments = url.split("/");
+        let path = "";
+        let version = "";
+        let language = "";
+        for (let f of fragments.reverse()){
+            if (f.match(/((^\d{2}\.\d$)|(^saas\-\d{2}.\d$)|(^master$))/)) {
+                version = f;
+                break;
+            } else if (f.match(/((^[a-z]{2}_[A-Z]{2})$|^([a-z]{2})$)/)) {
+                language = f;
+            } else {
+                path = (path ? f + "/" + path : f);
+            }
+        }
+        const urls = [url]
+        if (version && language)
+            urls.push(
+                url.replace(version + "/" + language + "/" + path,
+                            version + "/" + path),
+                url.replace(version + "/" + language + "/" + path,
+                            version + "/" + language + "/index.html"),
+                url.replace(version + "/" + language + "/" + path,
+                            version + "/index.html"),
+                url.replace(version + "/" + language + "/" + path,
+                            "index.html"));
+        else if (version && !language)
+            urls.push(
+                url.replace(version + "/" + path,
+                            version + "/index.html"),
+                url.replace(version + "/" + path,
+                            "index.html"));
+        else if (!version && !language)
+            urls.push(
+                url.replace(path,
+                            "index.html"));
+
+        _testFetchUrl(urls);
+    };
+
+    const _testFetchUrl = (urls) => {
+        const url = urls.shift();
+        if (urls.length == 0 || url.startsWith("file:///")) {
+            window.location.href = url;
+            return;
+        }
+
+        fetch(url).then(resp => {
+            if (resp.ok) {
+                // success, navigate
+                window.location.href = url;
+            } else {
+                // 404, try next one
+                _testFetchUrl(urls);
+            }
+        });
+    };
+
+
 
 })();
