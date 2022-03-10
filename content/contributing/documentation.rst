@@ -4,6 +4,10 @@
 Write documentation
 ===================
 
+.. image:: documentation/rst_cheat_sheet/create-invoice.png
+   :align: center
+   :alt: Create an invoice
+
 .. toctree::
    :titlesonly:
 
