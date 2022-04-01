@@ -48,7 +48,7 @@ are:
    **Receipt scheduled date - Vendor delivery date** is the
    default *PO Order By* date.
 
--  **Days to Purchase**: number of days the purchasing department takes
+-  **Visibility Days**: number of days the purchasing department takes
    to validate a PO. If another RFQ to the same vendor is already
    opened, Odoo adds the line to the RFQ instead of creating a new
    one. Then, the specific date is set on the line.
