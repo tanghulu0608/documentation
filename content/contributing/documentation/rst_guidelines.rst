@@ -114,11 +114,11 @@ Use the menuselection directive
 ===============================
 
 Although chaining characters ``‣`` and menu names works fine to indicate a user which menus to
-click, it is best to use the ``menuselection`` directive (see
-:ref:`contributing/specialized-directives`) for the same result. Indeed, it renders the menus chain
-consistently with the rest of the documentation and would automatically adapt to the new graphic
-chart if we were to switch to a new one. This directive is used inline as follows:
-``:menuselection:`Settings --> Products --> Variants```.
+click, it is best to use the ``menuselection`` role (see :ref:`contributing/menuselection`) for the
+same result. Indeed, it renders the menus chain consistently with the rest of the
+documentation and would automatically adapt to the new graphic chart if we were to switch to a new
+one. This directive is used inline as follows: ``:menuselection:`Settings --> Products -->
+Variants```.
 
 .. _contributing/resilient-code:
 
