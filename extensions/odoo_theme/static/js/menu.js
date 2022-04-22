@@ -92,13 +92,17 @@
      * Test order:
      * 1. /documentation/15.0/fr/administration/install/install.html
      * 2. /documentation/15.0/administration/install/install.html
-     * 3. /documentation/15.0/fr/
-     * 4. /documentation/15.0/
-     * 5. /documentation/
+     * 3. /documentation/15.0/fr/administration/install.html
+     * 4. /documentation/15.0/administration/install.html
+     * 5. /documentation/15.0/fr/administration.html
+     * 6. /documentation/15.0/administration.html
+     * 7. /documentation/15.0/fr/
+     * 8. /documentation/15.0/
+     * 9. /documentation/
      */
     const _findClosestValidUrl = (url) => {
         const fragments = url.split("/");
-        let path = "";
+        let originalPath = "";
         let version = "";
         let language = "";
         for (let f of fragments.reverse()){
@@ -108,29 +112,55 @@
             } else if (f.match(/((^[a-z]{2}_[A-Z]{2})$|^([a-z]{2})$)/)) {
                 language = f;
             } else {
-                path = (path ? f + "/" + path : f);
+                originalPath = (originalPath ? f + "/" + originalPath : f);
             }
         }
-        const urls = [url]
+        const urls = [];
+        const paths = originalPath.split("/");
+
+        while (paths.length) {
+            if (!paths[paths.length-1].endsWith(".html"))
+                paths[paths.length-1] += ".html";
+            
+            if (version && language)
+                // -> 15.0/fr/administration.html
+                // -> 15.0/administration.html
+                urls.push(
+                    url.replace(version + "/" + language + "/" + originalPath,
+                                version + "/" + language + "/" + paths.join("/")),
+                    url.replace(version + "/" + language + "/" + originalPath,
+                                version + "/" + paths.join("/")));
+            else if (version && !language)
+                // -> 15.0/administration.html
+                urls.push(
+                    url.replace(version + "/" + originalPath,
+                                version + "/" + paths.join("/")));
+            else if (!version && !language)
+                // -> administration.html
+                urls.push(
+                    url.replace(originalPath,
+                                paths.join("/")));
+
+            paths.pop();
+        }
+
         if (version && language)
+            // -> 15.0/index.html
+            // -> index.html
             urls.push(
-                url.replace(version + "/" + language + "/" + path,
-                            version + "/" + path),
-                url.replace(version + "/" + language + "/" + path,
-                            version + "/" + language + "/index.html"),
-                url.replace(version + "/" + language + "/" + path,
+                url.replace(version + "/" + language + "/" + originalPath,
                             version + "/index.html"),
-                url.replace(version + "/" + language + "/" + path,
+                url.replace(version + "/" + language + "/" + originalPath,
                             "index.html"));
         else if (version && !language)
+            // -> index.html
             urls.push(
-                url.replace(version + "/" + path,
-                            version + "/index.html"),
-                url.replace(version + "/" + path,
+                url.replace(version + "/" + originalPath,
                             "index.html"));
         else if (!version && !language)
+            // -> index.html
             urls.push(
-                url.replace(path,
+                url.replace(originalPath,
                             "index.html"));
 
         _testFetchUrl(urls);
