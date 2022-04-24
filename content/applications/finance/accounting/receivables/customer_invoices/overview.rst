@@ -135,3 +135,13 @@ Some specific modules are also able to generate draft invoices:
 -  **membership**: invoice your members every year
 
 -  **repairs**: invoice your after-sale services
+
+Digitalize your invoices with Optical Character Recognition
+-----------------------------------------------------------
+
+With Optical Character Recognition (OCR), digitalize and import your invoices automatically into
+your database.
+
+.. seealso::
+   - :doc:`/applications/finance/accounting/payables/supplier_bills/ocr`
+
