@@ -14,6 +14,7 @@ Localizations
    localizations/colombia_ES
    localizations/france
    localizations/germany
+   localizations/india
    localizations/indonesia
    localizations/italy
    localizations/italy_IT
