@@ -294,4 +294,4 @@ purchase/replenishment/flows/purchase_triggering.rst applications/inventory_and_
 purchase/replenishment/flows/setup_stock_rule.rst applications/inventory_and_mrp/purchase/products/reordering.rst					# (#814)
 purchase/replenishment/multicompany/setup.rst applications/general/multi_companies/manage_multi_companies.rst	# (#814)
 
-content/applications/sales/crm/acquire_leads/generate_from_email.rst content/applications/sales/crm/acquire_leads/generate_from_website.rst # (#986)
+applications/sales/crm/acquire_leads/generate_from_email.rst applications/sales/crm/acquire_leads/generate_from_website.rst       # (#986)

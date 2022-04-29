@@ -1,15 +1,13 @@
-==============================
-Generating leads/opportunities
-==============================
+============================
+Generate leads/opportunities
+============================
 
-Automating the lead/opportunity generation will considerably improve your team's efficiency.
-Utilizing email aliases and a contact form in your database can aid in that improvement.
+Two key ways to generate new leads or opportunities for your business are through email aliases and
+website contact forms. Odoo automatically creates leads in your CRM whenever someone sends a
+message to a Sales Team email alias or fills out a contact form on your website.
 
-By default, any email sent to *sales@your_database_domain.ext* will create an opportunity in the
-default sales channel's pipeline associated with that particular email.
-
-Configuring email aliases
-=========================
+Configure email aliases
+=======================
 
 Each sales team can use their own email alias to automatically filter generated
 leads/opportunities into their pipeline. This functionality can be useful when managing several
@@ -20,83 +18,84 @@ under :menuselection:`CRM --> Configuration --> Sales Teams`.
    :align: center
    :alt: Configuring Sales Teams
 
-Using the Contact Us page on your website
-=========================================
+Use Contact Forms on your website
+=================================
 
-By default, your website's *Contact Us* page displays both your stored company information and
-Odoo’s ready-to-use contact form to generate leads/opportunities.
+By default, your website's *Contact Us* page displays Odoo's ready-to-use Contact Form. Whenever
+someone submits this form, a lead or an opportunity is generated in your database.
 
 .. image:: generate_from_website/default-contact-us-page.png
    :align: center
    :alt: Default Contact Us page
 
-This can be activated or deactivated at any time by going to :menuselection:`Website --> Go to
-Website --> Customize --> Contact Form` on your website and toggling the option on or off.
+The Contact Form can be activated or deactivated at any time by going to :menuselection:`Website
+--> Go to Website --> Customize --> Contact Form`.
 
 .. image:: generate_from_website/contact-form-toggle.png
    :align: center
    :alt: Contact Form toggle
 
-When the form is toggled off, the *Contact Us* page lets visitors know that they can contact your
-company by email contact and display a button to send one directly. Any emails sent this way will
-generates a lead/opportunity.
+When the Form is deactivated, the *Contact Us* page simply displays a button to email your company
+directly. Any email sent this way will generate a lead/opportunity.
 
 .. image:: generate_from_website/default-contact-us-page-no-form.png
    :align: center
    :alt: Contact Us Page using email
 
-To change the form to a specific sales channel, go to :menuselection:`Website --> Configuration -->
-Settings.` Under *Communication,* you can change which *Sales Team* or *Salesperson* is assigned
-to any incoming leads or opportunities from your Contact Form.
+Choose which Sales Team or salesperson is automatically assigned to the leads/opportunities created
+from the Contact Form by going to :menuselection:`Website --> Configuration --> Settings -->
+Communication`.
 
 .. image:: generate_from_website/contact-form-settings.png
    :align: center
    :alt: Contact Form settings
 
-Creating a custom Contact Form
-==============================
+Customize Contact Forms
+=======================
 
-Wanting more info from visitors using the Contact Form? Contact Forms can be customized for the
-specific information your team needs. They can generate multiple types of records in the
-system, such as emails, leads/opportunities, project tasks, helpdesk tickets, and more.
+Contact Forms can be customized for the specific information your team needs, using the free *Form
+Builder* module.
 
 The free *Form Builder* module can be installed from either the apps page or automatically when
-adding a form to a page in the Website Builder. Adding a whole new form can be great if you are
+adding a form to a page in the Website Builder. Adding a whole new form can be useful if you are
 soliciting certain information that needs filtering, such as suggestions, bug reports, etc.
 
 .. image:: generate_from_website/form-building-block.png
    :align: center
    :alt: Form Builder building blocks
 
-However, if the Contact Us Page's available predefined form options can work with some editing,
-editing these options is the fastest way to customize the form to fit your needs.
+.. tip::
+   Forms can be created from scratch to serve a wide variety of purposes. However, Odoo's default
+   *Contact Us* page is designed to fit most users' needs. Start with the default form and modify
+   from there.
 
-Editing contact form fields
----------------------------
-In edit mode, click on the field to change, and you can edit any of the following information for
-the specific field:
+Edit Contact Form fields
+------------------------
+
+In Edit mode on your website, click on any field to start editing it. The following information can
+be edited for each field on the Contact Form:
 
 - **Type**: Choose a custom field option or an existing field. Examples include phone, file
   upload, language, etc.
-- **Input Type**: This determines the type of entry customers should input. Available options are
-  text, email, telephone, and URL.
+- **Input Type**: Determine the type of entry customers should input. Available options are text,
+  email, telephone, and URL.
 - **Input Placeholder**: Type in an example to guide users how to input information where
   formatting is important, such as a phone number or email address.
 - **Label Name**: Type in the display name to show users what information is needed from them.
 - **Label Position**: Choose the way the label is aligned with the rest of the form. The label
   can be hidden, above the field, to the far left of the field, or right adjusted and closer to the
   field.
-- **Required**: Toggleable option for information that you absolutely need entered.
-- **Hidden**: Toggleable option to hide the given field for this form or not.
-- **Shown on Mobile**: Toggleable option to show the field to users on mobile devices.
+- **Required**: Toggle this option for information that you absolutely need entered.
+- **Hidden**: Toggle this option to hide the field without deleting it.
+- **Shown on Mobile**: Toggle this option to show the field to users on mobile devices.
 
 .. image:: generate_from_website/editable-field-options.png
    :align: center
    :alt: Editable field options
 
-A completed form's default action is to send you the customer's inputted information by
-email. You can change this to lead/opportunity generation in edit mode by clicking any of the
-form’s fields, and under the form options, selecting **Create an Opportunity** as the action.
+By default, when a Form is submitted, it sends you an email with the customer's inputted
+information. To have it automatically generate a lead/opportunity instead, edit the Form and select
+**Create an Opportunity** as the Action.
 
 .. tip::
    If leads are activated in your CRM settings, selecting **Create an Opportunity** generates a
